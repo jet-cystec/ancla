@@ -58,6 +58,11 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Clase para volver blanco el logo (para fondo oscuro) */
+        .filter-white {
+            filter: brightness(0) invert(1);
+        }
     </style>
 </head>
 
@@ -77,7 +82,8 @@
                      3. Borra o comenta el <div id="temp-logo"> que está debajo.
                 -->
 
-                <img src="logotipo.png" alt="Cystec Global Logo" class="h-10 w-auto object-contain">
+                <img id="navbar-logo" src="logotipo.png" alt="Cystec Global Logo"
+                    class="h-10 w-auto object-contain filter-white transition-all duration-300">
 
                 <!-- LOGO TEMPORAL (Borrar al usar imagen real) -->
                 <!--
@@ -548,6 +554,7 @@
         const mobileLinks = document.querySelectorAll('.mobile-link');
         const navLinks = document.querySelectorAll('.nav-link');
         const ctaButton = document.getElementById('cta-button');
+        const navbarLogo = document.getElementById('navbar-logo');
 
         const menuIcon = mobileMenuBtn.querySelector('svg');
 
@@ -570,6 +577,9 @@
 
                 mobileMenuBtn.classList.remove('text-white');
                 mobileMenuBtn.classList.add('text-gray-800');
+                // Logo: Volver a original (color)
+                if (navbarLogo) navbarLogo.classList.remove('filter-white');
+
             } else {
                 // Estado: Top (Transparente, texto blanco)
                 navbar.classList.remove('bg-white', 'shadow-md', 'py-3');
@@ -587,6 +597,9 @@
 
                 mobileMenuBtn.classList.add('text-white');
                 mobileMenuBtn.classList.remove('text-gray-800');
+                // Logo: Volver a blanco (filtro)
+                if (navbarLogo) navbarLogo.classList.add('filter-white');
+
             }
         }
 
