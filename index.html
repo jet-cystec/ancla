@@ -87,9 +87,7 @@
                 -->
                 <!-- FIN LOGO TEMPORAL -->
 
-                <span id="brand-text" class="text-xl font-bold tracking-tight text-white transition-colors">
-                    cystec<span class="font-light">.global</span>
-                </span>
+
             </a>
 
             <!-- Desktop Menu -->
@@ -550,7 +548,7 @@
         const mobileLinks = document.querySelectorAll('.mobile-link');
         const navLinks = document.querySelectorAll('.nav-link');
         const ctaButton = document.getElementById('cta-button');
-        const brandText = document.getElementById('brand-text');
+
         const menuIcon = mobileMenuBtn.querySelector('svg');
 
         // Función para actualizar el estilo del navbar al hacer scroll
@@ -560,8 +558,7 @@
                 navbar.classList.add('bg-white', 'shadow-md', 'py-3');
                 navbar.classList.remove('bg-transparent', 'py-5');
 
-                brandText.classList.remove('text-white');
-                brandText.classList.add('text-green-950');
+
 
                 navLinks.forEach(link => {
                     link.classList.remove('text-gray-200');
@@ -578,8 +575,7 @@
                 navbar.classList.remove('bg-white', 'shadow-md', 'py-3');
                 navbar.classList.add('bg-transparent', 'py-5');
 
-                brandText.classList.add('text-white');
-                brandText.classList.remove('text-green-950');
+
 
                 navLinks.forEach(link => {
                     link.classList.add('text-gray-200');
