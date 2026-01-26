@@ -23,7 +23,7 @@ jobs:
       run: python3 build_site.py
       
     - name: 📊 Upload Minified HTML
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: production-build
         path: index.min.html
