@@ -1,8 +1,9 @@
 # Archivos generados por el build pipeline
 index.min.html
 
-# Backups (opcional: descomenta si no quieres versionar backups)
+# Directorio de Backups (Excluido de Git para seguridad y ligereza)
 backups/
+backups/**
 
 # Python
 __pycache__/
@@ -10,20 +11,31 @@ __pycache__/
 *$py.class
 *.so
 .Python
+.venv/
+env/
+venv/
+ENV/
 
 # IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
+*.sublime-project
+*.sublime-workspace
 
 # Sistema
 .DS_Store
 Thumbs.db
+.directory
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Temporal
 *.tmp
 .cache/
+.temp/
