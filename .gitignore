@@ -2,7 +2,7 @@
 index.min.html
 
 # Backups (opcional: descomenta si no quieres versionar backups)
-# backups/
+backups/
 
 # Python
 __pycache__/
