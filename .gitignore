@@ -1,0 +1,29 @@
+# Archivos generados por el build pipeline
+index.min.html
+
+# Backups (opcional: descomenta si no quieres versionar backups)
+# backups/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporal
+*.tmp
+.cache/
