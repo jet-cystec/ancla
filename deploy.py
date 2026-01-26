@@ -115,17 +115,37 @@ class DeployManager:
 
     def deploy_local_preview(self):
         """
-        Crea un servidor local para preview.
+        Crea un servidor local para preview en un puerto disponible.
 
         Returns:
             bool: True si se inició correctamente
         """
         print("\n🌐 Iniciando servidor local de preview...")
+        
+        # Buscar puerto disponible
+        import socket
+        port = 8000
+        while port < 8010:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                res = sock.connect_ex(('localhost', port))
+                if res != 0: # Puerto libre (no pudo conectar)
+                    break
+                port += 1
+        
+        url = f"http://localhost:{port}"
+        print(f"✅ Servidor activo en: {url}")
         print("📝 Presiona Ctrl+C para detener\n")
 
         try:
+            # Abrir navegador automáticamente (opcional, pero útil)
+            try:
+                if os.uname().sysname == 'Linux':
+                    subprocess.run(['xdg-open', url], stderr=subprocess.DEVNULL)
+            except Exception:
+                pass
+
             subprocess.run(
-                ['python3', '-m', 'http.server', '8000'],
+                ['python3', '-m', 'http.server', str(port)],
                 cwd=self.project_root,
                 check=True
             )
