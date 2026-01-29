@@ -119,6 +119,10 @@ class BuildPipeline:
             if 'src=' not in script_tag:
                 return script_tag
 
+            # Excepción: No defer para Tailwind CDN (evita race condition con config inline)
+            if 'tailwindcss.com' in script_tag:
+                return script_tag
+
             # Añadir defer antes del cierre de la etiqueta
             script_tag = script_tag.replace('<script', '<script defer', 1)
             return script_tag
