@@ -123,6 +123,10 @@ class BuildPipeline:
             if 'tailwindcss.com' in script_tag:
                 return script_tag
 
+            # Excepción: No defer para Lucide Icons (evita que falten iconos)
+            if 'unpkg.com/lucide' in script_tag:
+                return script_tag
+
             # Añadir defer antes del cierre de la etiqueta
             script_tag = script_tag.replace('<script', '<script defer', 1)
             return script_tag
