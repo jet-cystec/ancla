@@ -86,14 +86,9 @@ class BuildPipeline:
             flags=re.DOTALL
         )
 
-        # Eliminar espacios en blanco múltiples y saltos de línea
-        html_content = re.sub(r'\s+', ' ', html_content)
-
-        # Eliminar espacios alrededor de etiquetas
-        html_content = re.sub(r'>\s+<', '><', html_content)
-
-        # Eliminar espacios al inicio y final
-        html_content = html_content.strip()
+        # ADVERTENCIA: No eliminar espacios en blanco (re.sub de \s+ o >\s+<)
+        # Esto rompe el layout de Tailwind y la estructura del DOM necesaria para JS.
+        # Solo eliminamos comentarios.
 
         return html_content
 
