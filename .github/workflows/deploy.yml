@@ -51,15 +51,25 @@ jobs:
     - name: 🔨 Build Site
       run: python3 build_site.py
       
-    # Descomentar y configurar según tu método de deploy:
+    - name: 📦 Prepare Production Files
+      run: |
+        echo "📋 Preparing production files..."
+        cp index.min.html index.html
+        echo "✅ Copied index.min.html → index.html (optimized version)"
+        ls -lh index.html index.min.html
+      
+    # Deploy automático a GitHub Pages con versión minificada
     
-    # Opción 1: Deploy a GitHub Pages
-    # - name: 🚀 Deploy to GitHub Pages
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./
-    #     publish_branch: gh-pages
+    - name: 🚀 Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        publish_branch: gh-pages
+        keep_files: false
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Deploy minified site'
     
     # Opción 2: Deploy a Netlify
     # - name: 🚀 Deploy to Netlify
