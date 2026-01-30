@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cystec.global - Consultoría Cloud Estratégica</title>
 
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/webp" href="im.webp">
+    <link rel="apple-touch-icon" href="im.png">
+
     <!-- Tailwind CSS (Estilos) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -82,7 +86,7 @@
                      3. Borra o comenta el <div id="temp-logo"> que está debajo.
                 -->
 
-                <img id="navbar-logo" src="logotipo.png" alt="Cystec Global Logo"
+                <img id="navbar-logo" src="logotipo.webp" alt="Cystec Global Logo"
                     class="h-10 w-auto object-contain filter-white transition-all duration-300">
 
                 <!-- LOGO TEMPORAL (Borrar al usar imagen real) -->
@@ -107,7 +111,8 @@
                 <a href="#resultados"
                     class="nav-link text-sm font-medium text-gray-200 hover:text-green-600 transition-colors">Resultados</a>
                 <a href="#casos"
-                    class="nav-link text-sm font-medium text-gray-200 hover:text-green-600 transition-colors">Casos de Uso</a>
+                    class="nav-link text-sm font-medium text-gray-200 hover:text-green-600 transition-colors">Casos de
+                    Uso</a>
 
                 <a href="#contacto" id="cta-button"
                     class="px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md transform hover:-translate-y-0.5 bg-white text-green-900 hover:bg-gray-100">
@@ -133,7 +138,8 @@
             <a href="#resultados"
                 class="mobile-link text-gray-800 font-medium py-2 hover:text-green-700 border-b border-gray-50">Resultados</a>
             <a href="#casos"
-                class="mobile-link text-gray-800 font-medium py-2 hover:text-green-700 border-b border-gray-50">Casos de Uso</a>
+                class="mobile-link text-gray-800 font-medium py-2 hover:text-green-700 border-b border-gray-50">Casos de
+                Uso</a>
             <a href="#contacto"
                 class="mobile-link w-full text-center bg-green-900 text-white py-3 rounded-lg font-semibold mt-4 hover:bg-green-800 transition-colors">
                 Agendar Café Virtual
@@ -146,8 +152,7 @@
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
             <!-- Imagen Tech/Cloud -->
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
-                alt="Infraestructura Cloud" class="w-full h-full object-cover">
+            <img src="hero-bg.webp" alt="Infraestructura Cloud" class="w-full h-full object-cover">
 
             <!-- Gradient Overlay Suave -->
             <div
@@ -373,50 +378,63 @@
     <section id="casos" class="py-24 bg-white relative scroll-mt-24">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-green-600 font-bold tracking-wider text-sm uppercase mb-4 block">Soluciones en Acción</span>
-                <h2 class="text-green-900 font-bold text-3xl md:text-4xl mb-4">Arquitecturas que resuelven problemas reales</h2>
-                <p class="text-gray-600 text-lg">Descubre cómo nuestras arquitecturas cloud resuelven problemas reales de negocio.</p>
+                <span class="text-green-600 font-bold tracking-wider text-sm uppercase mb-4 block">Soluciones en
+                    Acción</span>
+                <h2 class="text-green-900 font-bold text-3xl md:text-4xl mb-4">Arquitecturas que resuelven problemas
+                    reales</h2>
+                <p class="text-gray-600 text-lg">Descubre cómo nuestras arquitecturas cloud resuelven problemas reales
+                    de negocio.</p>
                 <div class="w-20 h-1 bg-green-500 mx-auto mt-6 rounded-full"></div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
                 <!-- Card 1: Automatización -->
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-green-600 mb-6 shadow-sm">
+                <div
+                    class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-green-600 mb-6 shadow-sm">
                         <i data-lucide="bot" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Automatización de Workflows</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Eliminamos tareas repetitivas conectando tus aplicaciones existentes mediante scripts inteligentes y flujos de trabajo autónomos.
+                        Eliminamos tareas repetitivas conectando tus aplicaciones existentes mediante scripts
+                        inteligentes y flujos de trabajo autónomos.
                     </p>
                 </div>
 
                 <!-- Card 2: Control de Tiempos -->
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-green-600 mb-6 shadow-sm">
+                <div
+                    class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-green-600 mb-6 shadow-sm">
                         <i data-lucide="clock" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Control de Tiempos (SLA)</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Monitorización precisa de tiempos de respuesta y resolución para garantizar el cumplimiento de acuerdos de nivel de servicio.
+                        Monitorización precisa de tiempos de respuesta y resolución para garantizar el cumplimiento de
+                        acuerdos de nivel de servicio.
                     </p>
                 </div>
 
                 <!-- Card 3: Visibilidad -->
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-green-600 mb-6 shadow-sm">
+                <div
+                    class="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-green-600 mb-6 shadow-sm">
                         <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Visibilidad en Tiempo Real</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
-                        Dashboards centralizados que transforman datos dispersos en información accionable para la toma de decisiones estratégicas.
+                        Dashboards centralizados que transforman datos dispersos en información accionable para la toma
+                        de decisiones estratégicas.
                     </p>
                 </div>
             </div>
 
             <!-- CTA Button -->
             <div class="flex justify-center">
-                <a href="https://flow.cystec.global/" target="_blank" class="flex items-center gap-2 px-8 py-4 bg-green-900 hover:bg-green-800 text-white font-bold rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                <a href="https://flow.cystec.global/" target="_blank"
+                    class="flex items-center gap-2 px-8 py-4 bg-green-900 hover:bg-green-800 text-white font-bold rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1">
                     <span>Ver detalles en Cystec Flow</span>
                     <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
