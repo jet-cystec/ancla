@@ -556,19 +556,23 @@
     
     <script>
         // --- CAPA 1: Inicialización Defensiva de Iconos ---
-        (function initializeIcons() {
-            try {
-                if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                    lucide.createIcons();
-                    console.log('✅ Lucide Icons initialized successfully');
-                } else {
-                    console.warn('⚠️  Lucide library not loaded. Icons will be missing but site remains functional.');
+        // Esperar a que el DOM y scripts diferidos estén listos
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dar un pequeño delay adicional para scripts defer
+            setTimeout(function () {
+                try {
+                    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                        lucide.createIcons();
+                        console.log('✅ Lucide Icons initialized successfully');
+                    } else {
+                        console.warn('⚠️  Lucide library not loaded. Icons will be missing but site remains functional.');
+                    }
+                } catch (error) {
+                    console.error('❌ Error initializing Lucide Icons:', error);
+                    // El sitio CONTINÚA funcionando sin iconos
                 }
-            } catch (error) {
-                console.error('❌ Error initializing Lucide Icons:', error);
-                // El sitio CONTINÚA funcionando sin iconos
-            }
-        })();
+            }, 50);
+        });
 
         // --- CAPA 2: Lógica de Negocio Crítica (SIEMPRE SE EJECUTA) ---
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -665,7 +669,7 @@
                 <i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>
                 <span>Enviando...</span>
             `;
-            
+
             // Re-renderizar icono de carga (con protección)
             try {
                 if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -703,7 +707,7 @@
                 // Restaurar botón
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnContent;
-                
+
                 // Restaurar iconos del botón (con protección)
                 try {
                     if (typeof lucide !== 'undefined' && lucide.createIcons) {
