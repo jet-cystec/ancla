@@ -78,19 +78,23 @@ class BuildPipeline:
             str: Contenido HTML minificado
         """
         # Usar una función de callback para un control preciso sobre qué comentarios borrar
+        # Usar una función de callback para un control preciso sobre qué comentarios borrar
         def replacement_callback(match):
             comment = match.group(0)
             
-            # LISTA BLANCA: Conservar comentarios que contengan estos marcadores
-            if 'id=' in comment or 'CONTENT:' in comment:
+            # LISTA BLANCA ESTRICTA:
+            # Solo conservar comentarios que sean marcadores de contenido explícitos.
+            # Eliminamos 'id=' de la lista blanca porque estaba protegiendo código comentado viejo.
+            if 'CONTENT:' in comment:
                 return comment
             
             # Si no es un comentario protegido, borrarlo.
-            # Devolvemos un salto de línea para seguridad del layout (evita concatenar líneas accidentalmente)
-            return '\n'
+            # Devolvemos un espacio simple para evitar concatenación accidental de palabras,
+            # pero NO un salto de línea para evitar inflar el número de líneas.
+            return ' '
 
         # Regex para capturar TODOS los comentarios HTML (non-greedy)
-        # flags=re.DOTALL permite que el punto (.) coincida con saltos de línea
+        # flags=re.DOTALL permite que el punto (.) coincida con saltos de línea (multilínea)
         html_content = re.sub(
             r'<!--(.*?)-->',
             replacement_callback,
@@ -98,9 +102,9 @@ class BuildPipeline:
             flags=re.DOTALL
         )
         
-        # Eliminar líneas vacías múltiples que pudieron quedar tras borrar comentarios
-        # Esto es puramente estético para el archivo minificado, no afecta el renderizado
-        # html_content = re.sub(r'\n\s*\n', '\n', html_content)
+        # Limpieza estética: Eliminar líneas que hayan quedado vacías (solo espacios)
+        # Esto reduce el contador de líneas final.
+        html_content = re.sub(r'^\s*$\n', '', html_content, flags=re.MULTILINE)
 
         return html_content
 
