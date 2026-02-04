@@ -77,18 +77,30 @@ class BuildPipeline:
         Returns:
             str: Contenido HTML minificado
         """
-        # Eliminar comentarios HTML EXCEPTO los críticos para navegación
-        # Protege: comentarios con 'id=' y etiquetas <!-- CONTENT -->
+        # Usar una función de callback para un control preciso sobre qué comentarios borrar
+        def replacement_callback(match):
+            comment = match.group(0)
+            
+            # LISTA BLANCA: Conservar comentarios que contengan estos marcadores
+            if 'id=' in comment or 'CONTENT:' in comment:
+                return comment
+            
+            # Si no es un comentario protegido, borrarlo.
+            # Devolvemos un salto de línea para seguridad del layout (evita concatenar líneas accidentalmente)
+            return '\n'
+
+        # Regex para capturar TODOS los comentarios HTML (non-greedy)
+        # flags=re.DOTALL permite que el punto (.) coincida con saltos de línea
         html_content = re.sub(
-            r'<!--(?!.*?(?:id=|CONTENT)).*?-->',
-            '',
+            r'<!--(.*?)-->',
+            replacement_callback,
             html_content,
             flags=re.DOTALL
         )
-
-        # ADVERTENCIA: No eliminar espacios en blanco (re.sub de \s+ o >\s+<)
-        # Esto rompe el layout de Tailwind y la estructura del DOM necesaria para JS.
-        # Solo eliminamos comentarios.
+        
+        # Eliminar líneas vacías múltiples que pudieron quedar tras borrar comentarios
+        # Esto es puramente estético para el archivo minificado, no afecta el renderizado
+        # html_content = re.sub(r'\n\s*\n', '\n', html_content)
 
         return html_content
 
