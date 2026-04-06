@@ -22,7 +22,7 @@ Located in: `scripts/build_site.py`
 
 **Features:**
 - **Automated Backup:** Creates timestamped backups before building.
-- **Safe Minification:** Removes comments but preserves whitespace to maintain layout integrity.
+- **Safe Minification:** Removes comments using a strict whitelist (only `CONTENT:` preserved) and replaces them with a single space (not newline) to prevent line bloat while maintaining layout safety.
 - **Smart Script Optimization:** Adds `defer` to scripts for performance, but **EXCLUDES** critical libraries:
   - `tailwindcss.com` (Avoids race conditions with inline config)
   - `unpkg.com/lucide` (Ensures icons render correctly)
